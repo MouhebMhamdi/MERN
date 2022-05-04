@@ -1,0 +1,21 @@
+<form (submit)="login()">
+    <div class="form" [formGroup]="myFormLogin">
+            <i class="bi bi-person-circle"></i>
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Email address</label>
+                <input type="email" [(ngModel)]="Admin.email" formControlName="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" [ngClass]="{ 'is-invalid': submittedLogin && myFormLogin.controls.email.errors }">
+                <div *ngIf="myFormLogin.controls['email'].hasError('required')" class="invalid-feedback">
+                  <div>Email is required</div>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Password</label>
+                <input type="password"  formControlName="password" class="form-control" id="exampleInputPassword1" [ngClass]="{ 'is-invalid': submittedLogin && myFormLogin.controls.password.errors }" [(ngModel)]="Admin.password">
+                <div *ngIf="myFormLogin.controls['password'].hasError('required')" class="invalid-feedback">
+                  <div>Password is required</div>
+                </div>
+            </div>
+            
+            <button type="submit" class="btn btn-primary">login</button>
+    </div>
+</form>

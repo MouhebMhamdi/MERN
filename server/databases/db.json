@@ -1,0 +1,5 @@
+{
+    "mongo":{
+        "uri":"mongodb+srv://jesser:jCWtAA7tXdKVuZ1b@miniprojet.dpkeg.mongodb.net/pim?retryWrites=true&w=majority"
+    }
+}
