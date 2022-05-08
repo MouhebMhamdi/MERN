@@ -18,4 +18,6 @@ router.delete('/delete/:id',authenticateToken,UserController.deleteuser)
 router.get('/all',authenticateToken,UserController.getAdminData);
 router.get('/:id',authenticateToken,UserController.getUserById);
 
+
+
 module.exports = router;
