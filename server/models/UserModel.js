@@ -11,7 +11,14 @@ const UserSchema = mongoose.Schema({
         type: String,
         required: true,
     },
-    
+    points:{
+        type:Number,
+        default:0
+    },
+    Status:{
+        type:Boolean,
+        default:true
+    },
     profilepic: {
         type: String,
         required: false,
@@ -28,6 +35,9 @@ const UserSchema = mongoose.Schema({
     createdAt: {
         type: Number,
         default: Date.now
+    },Age:{
+        type: Number,
+        required:true
     }
 });
 

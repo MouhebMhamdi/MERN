@@ -16,12 +16,11 @@
     <tbody>
         <tr *ngFor="let admin of Admin| filter:term| paginate: { itemsPerPage: 5, currentPage: p} ;let i = index;">
         <th scope="row">{{i+1}}</th>
-        <td><img [src]="admin.profilepic" alt="Avatar" class="avatar">{{admin.username}}</td>
+        <td><img [src]="admin.profilepic" onerror="this.src='https://i1.sndcdn.com/avatars-000437232558-yuo0mv-t500x500.jpg'" alt="Avatar" class="avatar">{{admin.username}}</td>
         <td>{{admin.email}}</td>
         <td>
             <mat-slide-toggle checked="{{admin.Status}}" (change)="toggle($event,admin._id)"></mat-slide-toggle>
         </td>
-        <td style="text-align: center !important; "><button class="btn btn-secondary" (click)="getUserById(admin._id,update)"><i class="bi bi-pencil-square"></i></button> </td>
         </tr>
     
     </tbody>

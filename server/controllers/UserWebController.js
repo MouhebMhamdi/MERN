@@ -1,8 +1,11 @@
 
 const Admin=require('../models/Admin');
 const UserMobileApp=require('../models/UserModel');
+const { ImageMarket }=require('../models/ImageMarket.model');
+const Users=require('../models/UserModel')
 const bcrypt = require('bcrypt');
 const jwt = require("jsonwebtoken")
+var session = require('express-session');
 
 
 exports.signup=async(req,res)=>{
@@ -36,6 +39,14 @@ exports.login=async(req,res)=>{
             if(data){
                 const admin1={name:admin.email,role:admin.role}
                 const token =jwt.sign(admin1,process.env.JWT_SECRET,{expiresIn: "1d"});
+
+                session ({
+                    secret: "eazejkehjhgdjhqsvndhkggazuligdazjhvlhqgdgkazldmfzaffz5f45a64fz98e74651de351az8d4z",
+                    resave: true,
+                    saveUninitialized: false,
+                    cookie: {}
+                })
+
               return   res.status(200).json({Admin:admin,AccessToken: token})
             }else{
                 return res.status(405).json({message:"Error login !"})
@@ -58,8 +69,8 @@ exports.getUserById=async(req,res)=>{
 }
 exports.getAdminData=async(req,res)=>{
     if(req.user.role!="ADMIN") return res.status(505).send("Sorry only the admin can display this data");
-    const admin=await Admin.find({email:{$ne:req.user.name}}).select([
-        "email","username","Status","profilepic","role"
+    const admin=await Users.find({email:{$ne:req.user.name}}).select([
+        "email","username","Status","profilepic","role","Age"
     ]);
     
     if(admin){
@@ -83,10 +94,10 @@ exports.deleteuser=async(req,res)=>{
 
 exports.updateAdmin=async(req,res)=>{
     if(req.user.role!="ADMIN") return res.status(505).send("Sorry only the admin can touch this");
-    await Admin.findByIdAndUpdate({_id:req.params.id},req.body).then(admin=>{
+    await Users.findByIdAndUpdate({_id:req.params.id},req.body).then(admin=>{
         if(!admin)return res.status(400).send("Admin not found");
     })
-    Admin.findById({_id:req.params.id}).select([
+    Users.findById({_id:req.params.id}).select([
         "email","username","Status","profilepic","role"
     ]).then(data=>{
         if(data){
@@ -108,4 +119,61 @@ exports.getUserConnect = async(req,res) => {
         return res.status(556).send(err);
     }
     
+}
+
+exports.getNbrUserConnect=async (req,res)=>{
+    res.send("hello")
+   
+}
+
+exports.countUsers=async(req,res)=>{
+    Users.count({}, function(err, result){
+        if(err){
+            return res.status(500).send(err)
+        }else{
+            return res.status(200).json(result)
+        }
+    })
+}
+exports.countAdmins=async(req,res)=>{
+    Admin.count({}, function(err, result){
+        if(err){
+            return res.status(500).send(err)
+        }else{
+            return res.status(200).json(result)
+        }
+    })
+}
+
+exports.countProduct=async(req,res)=>{
+    ImageMarket.count({}, function(err, result){
+        if(err){
+            return res.status(500).send(err)
+        }else{
+            return res.status(200).json(result)
+        }
+    })
+}
+exports.Age=async(req,res)=>{
+    Users.count({Age:{$gt:req.params.age}}, function(err, result){
+        if(err){
+            return res.status(500).send(err)
+        }else{
+            return res.status(200).json(result)
+        }
+    })
+}
+
+exports.sumPoints=async(req,res)=>{
+    Users.aggregate([{
+        "$group": {
+            "_id": "6252dc15f0d3cb389c4ab746",
+            "total": {
+                "$sum": "$Points"
+            }
+        }
+    
+    }]).then(response => {
+        res.status(200).send(response)
+    }).catch(e => res.status(400).send())
 }

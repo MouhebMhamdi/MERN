@@ -15,7 +15,7 @@ var imageMarketRouter = require('./repositories/ImageMaketRepository');
 var app = express();
 const server = http.createServer(app);
 const mongoose = require("./databases/db.js")
-
+const io=require('socket.io')(server)
 
 var mongooses=require('mongoose');
 
@@ -23,6 +23,20 @@ var mongooses=require('mongoose');
 let gfs;
 
 mongoose.connect();
+let online=0;
+io.on('connection',(socket)=>{
+  online++;
+  io.emit('online',online)
+
+  console.log('User connected');
+
+  socket.on('disconnect',()=>{
+    online--;
+    io.emit('online',online)
+    console.log("user disconnected");
+  })
+})
+
 
 const conn = mongooses.connection;
 conn.once("open", function () {

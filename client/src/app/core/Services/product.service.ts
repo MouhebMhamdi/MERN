@@ -28,4 +28,26 @@ export class ProductService {
     return this.http.put(this.url+"market/update/"+id,data,{ headers: new HttpHeaders().set('Authorization', `Bearer ${accessTOken}`)})
 
   }
+
+  nbrUsers(){
+    let accessTOken=localStorage.getItem("AccessToken");
+    return this.http.get<number>(this.url+"user/nbrUser",{ headers: new HttpHeaders().set('Authorization', `Bearer ${accessTOken}`)})
+
+  }
+  nbrAdmins(){
+    let accessTOken=localStorage.getItem("AccessToken");
+    return this.http.get<number>(this.url+"user/nbrAdmin",{ headers: new HttpHeaders().set('Authorization', `Bearer ${accessTOken}`)})
+
+  }
+  nbrProducts(){
+    let accessTOken=localStorage.getItem("AccessToken");
+    return this.http.get<number>(this.url+"user/nbrProduct",{ headers: new HttpHeaders().set('Authorization', `Bearer ${accessTOken}`)})
+
+  }
+
+  age(age:number){
+    let accessTOken=localStorage.getItem("AccessToken");
+    return this.http.get<number>(this.url+"user/Age/"+age,{ headers: new HttpHeaders().set('Authorization', `Bearer ${accessTOken}`)})
+
+  }
 }

@@ -68,10 +68,7 @@ export class CardComponent implements OnInit {
         startOnTick: false,
         endOnTick: false,
         tickOptions: []
-      },
-      series: [{
-        data:[71,78,39,66]
-      }]
+      }
     };
 
     HC_exporting(Highcharts);

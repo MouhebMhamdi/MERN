@@ -1,11 +1,15 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
+import { ProductService } from '../core/Services/product.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class DashboardService {
-
-  constructor() { }
+export class DashboardService implements OnInit{
+  gt15:number=0;
+  constructor(private productService:ProductService) { }
+  ngOnInit(): void {
+    this.Age15(50);
+  }
 
   bigChart() {
     return [{
@@ -32,34 +36,37 @@ export class DashboardService {
 
   pieChart() {
     return [{
-      name: 'Chrome',
-      y: 61.41,
+      name: 'Age greater then 15',
+      y:Number(localStorage.getItem("gt15")),
       sliced: true,
       selected: true
-    }, {
-      name: 'Internet Explorer',
-      y: 11.84
-    }, {
-      name: 'Firefox',
-      y: 10.85
-    }, {
-      name: 'Edge',
-      y: 4.67
-    }, {
-      name: 'Safari',
-      y: 4.18
-    }, {
-      name: 'Sogou Explorer',
-      y: 1.64
-    }, {
-      name: 'Opera',
-      y: 1.6
-    }, {
-      name: 'QQ',
-      y: 1.2
-    }, {
-      name: 'Other',
-      y: 2.61
+    },{
+      name: 'Age greater then 20',
+      y:Number(localStorage.getItem("gt20")),
+      sliced: true,
+      selected: true
+    }
+    ,{
+      name: 'Age greater then 30',
+      y:Number(localStorage.getItem("gt30")),
+      sliced: true,
+      selected: true
+    },{
+      name: 'Age greater then 50',
+      y:Number(localStorage.getItem("gt50")),
+      sliced: true,
+      selected: true
+    },{
+      name: 'Age greater then 80',
+      y:Number(localStorage.getItem("gt50")),
+      sliced: true,
+      selected: true
     }];
+  }
+
+  Age15(age:number){
+    this.productService.age(age).subscribe(res=>{
+      this.gt15=res;
+    })
   }
 }

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="9635ec3a-cd02-4259-8b6b-6c02ffda44a7" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../client/src/app/core/Model/Admin.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/app/core/Model/Admin.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/app/modules/users/users.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/app/modules/users/users.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/app/modules/users/users.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/app/modules/users/users.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/src/assets/mouheb.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/UserWebController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/UserWebController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/UserModel.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/UserModel.js" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="28sZcVEuatG2Rht3Nfnb9NcD8nr" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="9635ec3a-cd02-4259-8b6b-6c02ffda44a7" name="Changes" comment="" />
+      <created>1652007336424</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1652007336424</updated>
+      <workItem from="1652007338137" duration="11000" />
+    </task>
+    <servers />
+  </component>
+</project>

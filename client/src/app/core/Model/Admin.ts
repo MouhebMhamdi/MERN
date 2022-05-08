@@ -8,4 +8,5 @@ export class Admin {
     role:String;
     createdAt:Date;
     updatedAt:Date;
+    Age:number;
 }

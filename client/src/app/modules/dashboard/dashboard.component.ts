@@ -3,6 +3,7 @@ import { DashboardService } from '../dashboard.service';
 import { MatTableDataSource  } from '@angular/material/table';
 import { MatPaginator  } from '@angular/material/paginator';
 import { Router } from '@angular/router';
+import { ProductService } from 'src/app/core/Services/product.service';
 
 
 export interface PeriodicElement {
@@ -13,7 +14,7 @@ export interface PeriodicElement {
 }
 
 const ELEMENT_DATA: PeriodicElement[] = [
-  { position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H' },
+  { position: 1, name: 'Hydrogenn', weight: 1.0079, symbol: 'H' },
   { position: 2, name: 'Helium', weight: 4.0026, symbol: 'He' },
   { position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li' },
   { position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be' },
@@ -45,16 +46,26 @@ export class DashboardComponent implements OnInit {
   bigChart:any = [];
   cards:any = [];
   pieChart:any = [];
-
+  nbrUsers:number=0;
+  nbrAdmins:number=0;
+  nbrProducts:number=0;
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
 
   @ViewChild(MatPaginator, { static: true })
   paginator!: MatPaginator;
 
-  constructor(private dashboardService: DashboardService,private router:Router) { }
+  constructor(private dashboardService: DashboardService,private router:Router,private productService:ProductService) { }
 
   ngOnInit() {
+    this.Age15(15)
+    this.nbrUser();
+    this.Age20()
+    this.Age30()
+    this.Age50()
+    this.Age80()
+    this.nbradmin();
+    this.nbrproduct();
     if(localStorage.getItem("AccessToken")==null){
       this.router.navigate(["/"])
     }
@@ -65,4 +76,47 @@ export class DashboardComponent implements OnInit {
     this.dataSource.paginator = this.paginator;
   }
 
+  nbrUser(){
+    this.productService.nbrUsers().subscribe(res=>{
+      console.log(res)
+      this.nbrUsers=res;
+    })
+  }
+  nbradmin(){
+    this.productService.nbrAdmins().subscribe(res=>{
+      console.log(res)
+      this.nbrAdmins=res;
+    })
+  }
+  nbrproduct(){
+    this.productService.nbrProducts().subscribe(res=>{
+      console.log(res)
+      this.nbrProducts=res;
+    })
+  }
+  Age15(age:number){
+    this.productService.age(age).subscribe(res=>{
+      localStorage.setItem("gt15",String(res))
+    })
+  }
+  Age20(age:number=20){
+    this.productService.age(age).subscribe(res=>{
+      localStorage.setItem("gt20",String(res))
+    })
+  }
+  Age30(age:number=30){
+    this.productService.age(age).subscribe(res=>{
+      localStorage.setItem("gt30",String(res))
+    })
+  }
+  Age50(age:number=50){
+    this.productService.age(age).subscribe(res=>{
+      localStorage.setItem("gt50",String(res))
+    })
+  }
+  Age80(age:number=80){
+    this.productService.age(age).subscribe(res=>{
+      localStorage.setItem("gt80",String(res))
+    })
+  }
 }

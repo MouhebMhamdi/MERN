@@ -26,7 +26,7 @@ export class UsersComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllDatta()
-
+    
     this.Admins=new Admin();
     this.myFormLogin=  this.formBuilder.group(
       {
@@ -47,6 +47,7 @@ export class UsersComponent implements OnInit {
     this.authService.data().subscribe(admin=>{
       
       this.Admin=admin;
+      console.log(this.Admin)
     })
   }
   activateAccount(id:Number,etat:boolean){

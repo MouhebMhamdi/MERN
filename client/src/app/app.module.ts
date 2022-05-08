@@ -19,6 +19,13 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { ToastrModule } from 'ngx-toastr';
+import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+const config: SocketIoConfig = {
+	url: "http://localhost:3000", // socket server url;
+	options: {
+		transports: ['websocket']
+	}
+}
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,7 +51,8 @@ import { ToastrModule } from 'ngx-toastr';
     NgxPaginationModule,
     MatSlideToggleModule,
     Ng2SearchPipeModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    SocketIoModule.forRoot(config), 
   ],
   providers: [],
   bootstrap: [AppComponent]
